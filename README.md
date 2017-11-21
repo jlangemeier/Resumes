@@ -1,0 +1,2 @@
+When building the LaTeX files point them to the ./pdf folder using the commandline switch --output-directory=../pdf
+Change the name afterward, and run the pdf folder clean up script to get rid of intermediate files.
