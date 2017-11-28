@@ -1,7 +1,12 @@
-When building the LaTeX files point them to the ./pdf folder using the commandline switch --output-directory=../pdf
-Change the name afterward, and run the pdf folder clean up script to get rid of intermediate files.
-
 This template is based off of the (Friggeri CV)[https://www.latextemplates.com/template/friggeri-resume-cv] template.  The main changes that are being implemented, are to make the template more useful for multi-page resumes.  The original Friggeri template is good for single page resumes, but starts to look a bit strained for multi-page resumes.
+
+### Running the Output ###
+
+  - XeLaTeX full_cv
+  - biber full_cv
+  - XeLaTeX full_cv
+  - XeLaTeX full_cv
+
 
 ### Modification Plans ###
 

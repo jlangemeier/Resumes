@@ -183,13 +183,15 @@
 % Bibliography %
 %%%%%%%%%%%%%%%%
 
-\RequirePackage[style=verbose, maxnames=99, sorting=ydnt]{biblatex}
+\RequirePackage[backend=biber, style=verbose, maxnames=99, sorting=ydnt]{biblatex}
 
 \DeclareFieldFormat[article]{title}{#1\par}
 \DeclareFieldFormat[book]{title}{#1\par}
 \DeclareFieldFormat[inproceedings]{title}{#1\par}
 \DeclareFieldFormat[misc]{title}{#1\par}
 \DeclareFieldFormat[report]{title}{#1\par}
+\DeclareFieldFormat[conf]{title}{#1\par}
+
 
 \DeclareBibliographyDriver{article}{%
   \printfield{title}%
@@ -270,6 +272,25 @@
   \par\vspace{0.3\baselineskip}
 }
 
+\DeclareBibliographyDriver{conf}{%
+  \printfield{title}%
+  \newblock%
+  \printnames{author}%
+  {%
+    \footnotesize\addfontfeature{Color=lightgray}\itshape%
+    \setunit*{\adddot\space}%
+    \printfield{howpublished}%
+    \setunit*{\adddot\space}%
+    \printfield{note}%
+    \setunit*{\adddot\space}%
+    \printdate%
+    \setunit{\adddot\space}%
+    \printlist{location}%
+    \newunit%
+  }
+  \par\vspace{0.3\baselineskip}
+}
+
 \DeclareBibliographyDriver{report}{%
   \printfield{title}%
   \newblock%
@@ -289,23 +310,22 @@
 }
 
 \DeclareNameFormat{author}{%
+  \renewcommand*{\multinamedelim}{\addcomma\addspace}%
   \small\addfontfeature{Color=lightgray}%
-  \ifblank{#3}{}{#3\space}#1%
-  \ifthenelse{\value{listcount}<\value{liststop}}
-    {\addcomma\space}
-    {}%
+  \nameparts{#1}%
+  \usebibmacro{name:family-given}
+    {\namepartfamily}
+    {\namepartgiven}
+    {\namepartprefix}
+    {\namepartsuffix}%
+  \usebibmacro{name:andothers}%
 }
 
 \newcommand{\printbibsection}[2]{
   \begin{refsection}
     \nocite{*}
-    \printbibliography[sorting=chronological, type={#1}, title={#2}, heading=subbibliography]
+    \printbibliography[type={#1}, title={#2}, heading=subbibliography]
   \end{refsection}
-}
-
-\DeclareSortingScheme{chronological}{
-  \sort[direction=descending]{\field{year}}
-  \sort[direction=descending]{\field{month}}
 }
 
 
