@@ -135,22 +135,23 @@
 }{%
   \end{tabular*}
 }
+\renewcommand{\baselinestretch}{1.1}
 \renewcommand{\bfseries}{\headingfont\color{headercolor}}
 \newcommand{\entry}[4]{%
-  #1&\parbox[t]{11.8cm}{%
+  #1&\parbox[t]{16cm}{%
     \textbf{#2}%
     \hfill%
     {\footnotesize\addfontfeature{Color=lightgray} #3}\\%
     #4\vspace{\parsep}%
   }\\}
 \newcommand{\thinentry}[3]{%
-  #1&\parbox[t]{11.8cm}{%
+  #1&\parbox[t]{16cm}{%
     \textbf{#2}\\%
     {\footnotesize\addfontfeature{Color=lightgray} #3}%
     \vspace{\parsep}%
   }\\}
 \newcommand{\wideentry}[2]{%
-    \parbox[t]{14.5cm}{%
+    \parbox[t]{18.5cm}{%
     #1\\%
     {\footnotesize\addfontfeature{Color=lightgray} #2}%
     \vspace{\parsep}%
